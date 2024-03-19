@@ -7,13 +7,43 @@
 }
 
 section {
-  max-width: 900px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: sans-serif;
+  margin-block: 15px;
+
+  & h1 {
+    font-size: 3rem;
+  }
 }
 
-h1 {
-  text-align: center;
+.filtros {
+  width: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  & div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+select {
+  padding: 5px;
+  border: none;
+  outline: none;
+}
+
+.estante {
+  margin-top: 20px;
+  & ul {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(300px, 1fr));
+    gap: 15px;
+  }
 }
