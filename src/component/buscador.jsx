@@ -1,13 +1,13 @@
-import { useContext, useId } from 'react'
-import { FilterContext } from './filtros'
-import '../estilos/buscador.css'
-import { library } from '../mooks/books.json'
+import { useId, useState } from 'react'
 import { Libros } from './libro'
+import '../estilos/buscador.css'
+import { useLibrary } from '../hooks/useLibrary'
 
 export function Buscador() {
-  const { filters, setFilters } = useContext(FilterContext)
+  const { setFilters, filters, producto } = useLibrary()
   const rangeID = useId()
   const category = useId()
+  const carritoId = useId()
 
   const handleChange = event => {
     setFilters(previus => ({
@@ -23,13 +23,8 @@ export function Buscador() {
     }))
   }
 
-  const filtrado = () => {
-    return library.filter(value => {
-      return (
-        value.book.pages >= filters.pages &&
-        (filters.category === 'all' || filters.category === value.book.genre)
-      )
-    })
+  const handleClick = event => {
+    setCart(previus => {})
   }
 
   return (
@@ -42,7 +37,7 @@ export function Buscador() {
             id={rangeID}
             type='range'
             min='0'
-            max='1000'
+            max='600'
             value={filters.pages}
             onChange={handleChange}
           />
@@ -59,14 +54,18 @@ export function Buscador() {
       </div>
       <div className='estante'>
         <ul>
-          {filtrado().map(value => {
+          {producto.map(value => {
             return (
-              <li key={value.book.ISBN}>
+              <li key={value.book.ISBN} onClick={handleClick}>
                 <Libros poster={value.book.cover} title={value.book.title} />
               </li>
             )
           })}
         </ul>
+      </div>
+      <div className='carrito__container'>
+        <input type='checkbox' name='carrito' id={carritoId} hidden />
+        <div className='carrito'></div>
       </div>
     </section>
   )
