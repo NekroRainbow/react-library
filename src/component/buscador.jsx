@@ -1,9 +1,9 @@
-import { useId } from 'react'
 import '../estilos/buscador.css'
 import { useLibrary } from '../hooks/useLibrary'
 import { Menu } from './menu'
 import { Estanteria } from './estante'
 import { Carrito } from './carrito'
+import { CartProvider } from './carritoProveedor'
 
 export function Buscador() {
   const { setFilters, filters, producto } = useLibrary()
@@ -34,8 +34,10 @@ export function Buscador() {
         updateCategory={handleCategory}
         filtro={filters}
       />
-      <Estanteria producto={producto} update={handleClick} />
-      <Carrito />
+      <CartProvider>
+        <Estanteria producto={producto} update={handleClick} />
+        <Carrito />
+      </CartProvider>
     </section>
   )
 }
