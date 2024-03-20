@@ -1,12 +1,11 @@
-import { useId, useState } from 'react'
+import { useId } from 'react'
 import { Libros } from './libro'
 import '../estilos/buscador.css'
 import { useLibrary } from '../hooks/useLibrary'
+import { Menu } from './menu'
 
 export function Buscador() {
   const { setFilters, filters, producto } = useLibrary()
-  const rangeID = useId()
-  const category = useId()
   const carritoId = useId()
 
   const handleChange = event => {
@@ -30,28 +29,11 @@ export function Buscador() {
   return (
     <section>
       <h1>Libreria Reactiva</h1>
-      <div className='filtros'>
-        <div>
-          <label htmlFor={rangeID}>Libros con mas de:</label>
-          <input
-            id={rangeID}
-            type='range'
-            min='0'
-            max='600'
-            value={filters.pages}
-            onChange={handleChange}
-          />
-          <span>{filters.pages}</span>
-        </div>
-        <div>
-          <label htmlFor={category}>Categoria</label>
-          <select name='category' id={category} onChange={handleCategory}>
-            <option value='all'>Todos</option>
-            <option value='Fantasía'>Fantasia</option>
-            <option value='Zombies'>Zombies</option>
-          </select>
-        </div>
-      </div>
+      <Menu
+        update={handleChange}
+        updateCategory={handleCategory}
+        filtro={filters}
+      />
       <div className='estante'>
         <ul>
           {producto.map(value => {
