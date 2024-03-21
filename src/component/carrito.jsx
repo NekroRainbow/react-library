@@ -1,6 +1,12 @@
-import { useId } from 'react'
+import { useContext, useId } from 'react'
+import { CartContext } from './carritoProveedor'
 export function Carrito() {
+  const { cart, setCart } = useContext(CartContext)
   const carritoId = useId()
+
+  const handleButton = () => {
+    setCart([])
+  }
   return (
     <div className='carrito__container'>
       <label htmlFor={carritoId}>
@@ -20,7 +26,20 @@ export function Carrito() {
         </svg>
       </label>
       <input type='checkbox' name='carrito' id={carritoId} hidden />
-      <div className='carrito'></div>
+      <div className='carrito'>
+        <button className='remove__cart' onClick={handleButton}>
+          Clear
+        </button>
+        {cart &&
+          cart.map(value => {
+            return (
+              <div key={value.book.ISBN}>
+                <img src={value.book.cover} alt={value.book.title} />
+                <button>X</button>
+              </div>
+            )
+          })}
+      </div>
     </div>
   )
 }

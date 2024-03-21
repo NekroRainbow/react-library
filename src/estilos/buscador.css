@@ -70,7 +70,7 @@ select {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding: 10px;
     position: fixed;
     top: 0;
     background: black;
@@ -85,4 +85,15 @@ select {
   & input:checked ~ .carrito {
     right: 0;
   }
+}
+
+.remove__cart {
+  border: 1px solid white;
+  color: white;
+  background-color: black;
+  padding-block: 5px;
+  padding-inline: 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
 }

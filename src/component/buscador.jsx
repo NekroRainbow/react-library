@@ -4,6 +4,7 @@ import { Menu } from './menu'
 import { Estanteria } from './estante'
 import { Carrito } from './carrito'
 import { CartProvider } from './carritoProveedor'
+import { useState } from 'react'
 
 export function Buscador() {
   const { setFilters, filters, producto } = useLibrary()
@@ -22,10 +23,6 @@ export function Buscador() {
     }))
   }
 
-  const handleClick = event => {
-    setCart(previus => {})
-  }
-
   return (
     <section>
       <h1>Libreria Reactiva</h1>
@@ -35,7 +32,7 @@ export function Buscador() {
         filtro={filters}
       />
       <CartProvider>
-        <Estanteria producto={producto} update={handleClick} />
+        <Estanteria producto={producto} />
         <Carrito />
       </CartProvider>
     </section>
