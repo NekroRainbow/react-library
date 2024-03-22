@@ -66,12 +66,18 @@ select {
       scale: 1.1;
     }
   }
-  & .carrito {
+
+  .libros {
+    width: 300px;
+    height: 500px;
+  }
+  .carrito {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
     position: fixed;
+    gap: 20px;
     top: 0;
     background: black;
     right: -100%;
@@ -80,6 +86,26 @@ select {
     width: 450px;
     z-index: 1;
     transition: right 0.2s;
+    overflow-y: scroll;
+
+    & div {
+      position: relative;
+    }
+
+    & .exit__button {
+      position: absolute;
+      right: -15px;
+      top: -15px;
+      display: flex;
+      padding: 10px;
+      border: none;
+      border-radius: 50%;
+    }
+
+    & img {
+      width: 400px;
+      height: 500px;
+    }
   }
 
   & input:checked ~ .carrito {

@@ -1,7 +1,7 @@
 import { useContext, useId } from 'react'
 import { CartContext } from './carritoProveedor'
 export function Carrito() {
-  const { cart, setCart } = useContext(CartContext)
+  const { cart, setCart, eliminar } = useContext(CartContext)
   const carritoId = useId()
 
   const handleButton = () => {
@@ -35,7 +35,12 @@ export function Carrito() {
             return (
               <div key={value.book.ISBN}>
                 <img src={value.book.cover} alt={value.book.title} />
-                <button>X</button>
+                <button
+                  className='exit__button'
+                  onClick={() => eliminar(value)}
+                >
+                  X
+                </button>
               </div>
             )
           })}

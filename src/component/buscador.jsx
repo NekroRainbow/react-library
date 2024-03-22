@@ -3,8 +3,6 @@ import { useLibrary } from '../hooks/useLibrary'
 import { Menu } from './menu'
 import { Estanteria } from './estante'
 import { Carrito } from './carrito'
-import { CartProvider } from './carritoProveedor'
-import { useState } from 'react'
 
 export function Buscador() {
   const { setFilters, filters, producto } = useLibrary()
@@ -31,10 +29,8 @@ export function Buscador() {
         updateCategory={handleCategory}
         filtro={filters}
       />
-      <CartProvider>
-        <Estanteria producto={producto} />
-        <Carrito />
-      </CartProvider>
+      <Estanteria producto={producto} />
+      <Carrito />
     </section>
   )
 }
