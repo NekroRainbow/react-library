@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { Libros } from './libro'
 import { CartContext } from './carritoProveedor'
 export function Estanteria({ producto }) {
-  const { cart, setCart, agregar } = useContext(CartContext)
+  const { agregar } = useContext(CartContext)
 
   return (
     <div className='estante'>

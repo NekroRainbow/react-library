@@ -1,12 +1,9 @@
 import { useContext, useId } from 'react'
 import { CartContext } from './carritoProveedor'
 export function Carrito() {
-  const { cart, setCart, eliminar } = useContext(CartContext)
+  const { cart, vaciar, eliminar } = useContext(CartContext)
   const carritoId = useId()
 
-  const handleButton = () => {
-    setCart([])
-  }
   return (
     <div className='carrito__container'>
       <label htmlFor={carritoId}>
@@ -27,7 +24,7 @@ export function Carrito() {
       </label>
       <input type='checkbox' name='carrito' id={carritoId} hidden />
       <div className='carrito'>
-        <button className='remove__cart' onClick={handleButton}>
+        <button className='remove__cart' onClick={vaciar}>
           Clear
         </button>
         {cart &&
